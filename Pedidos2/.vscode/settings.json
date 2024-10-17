@@ -1,0 +1,4 @@
+{
+  "deno.codeLens.references": true,
+  "deno.config": "\"deno.enable\": true,"
+}
