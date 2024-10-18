@@ -1,5 +1,10 @@
 
+import { getAllPedidos } from "../services/pedidosServices.js";
 
-export const getAllPedidos = () => {
-  return "lista de todos los pedidos"
-}
+const getAllPedidos2 = async ({ response }) => {
+  
+  const x = await getAllPedidos();
+  response.body = x;
+};
+
+export { getAllPedidos2 }

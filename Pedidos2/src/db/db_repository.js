@@ -6,13 +6,16 @@ class PedidoRepo {
   }
 
   selectAll() {
-    const qry = "";
+    let qry = "";
     qry += "select p.id, p.fecha,  c.nombre, m.medio, c.contacto, ";
-    qry += "p.pedido, p.descripcion,";
-    qry += "e.nombre, d.estado from pedido as p ";
-    qry += "inner join cliente as c on p.id_cliente = c.id";
-    qry += "inner join medio as m on c.id_medio = m.id";
-    qry += "inner join encargado as e on p.id_encargado = e.id";
+    qry += "p.pedido, p.descripcion, ";
+    qry += "e.nombre, d.estado, "
+    qry += "(select cast (count(f.id) as INT) from foto as f where f.id_pedido = p.id) as num_fotos, "
+    qry += "(select cast( count(t.id) as INT) from comentario as t where t.id_pedido = p.id) as num_comentarios "
+    qry += "from pedido as p ";
+    qry += "inner join cliente as c on p.id_cliente = c.id ";
+    qry += "inner join medio as m on c.id_medio = m.id ";
+    qry += "inner join encargado as e on p.id_encargado = e.id ";
     qry += "inner join estado as d on p.id_estado = d.id;";
     return client.queryArray(qry);
   }

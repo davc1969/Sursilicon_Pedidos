@@ -1,7 +1,7 @@
 import { Router } from "jsr:@oak/oak/router";
 
 export const pedidosRoutes = new Router();
-import  { getAllPedidos }   from "../controllers/getAllPedidos.js";
+import  { getAllPedidos2 }   from "../controllers/getAllPedidos.js";
 import  { getOnePedido }    from "../controllers/getOnePedido.js";
 import  { crearPedido }     from "../controllers/crearPedido.js";
 import  { modificarPedido } from "../controllers/modificarPedido.js";
@@ -10,7 +10,7 @@ import  { borrarPedido }    from "../controllers/borrarPedido.js";
 
 pedidosRoutes
   .get("/", (context) => {
-    context.response.body = getAllPedidos(context)
+    return getAllPedidos2(context)
   })
   .get("/:id", (context) => {
     context.response.body = getOnePedido(context)
