@@ -1,3 +1,6 @@
 
 
-export const borrarPedido = "pedido borrado"
+
+export const borrarPedido = () => {
+  return "pedido borrado"
+}

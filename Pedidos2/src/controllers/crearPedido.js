@@ -1,3 +1,5 @@
 
 
-export const crearPedido = "pedido creado"
+export const crearPedido = () => {
+  return "pedido creado"
+}
