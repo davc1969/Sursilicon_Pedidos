@@ -14,6 +14,22 @@ export const getAllPedidos = async () => {
 
 };
 
+export const getOnePedido = async (pedidoId) => {
+  const pedidos = await PedidoRepo.selectOne(pedidoId);
+
+  if(pedidos.rowCount===0) return null
+  const response = {};
+
+  for (let i = 0; i<pedidos.rows.length; i++) {
+     for (let j = 0; j<pedidos.rows[i].length; j++) {
+       response[pedidos.rowDescription.columns[j].name] = pedidos.rows[i][j]
+     }
+   }
+
+  return response
+
+};
+
 // export const getBeer = async beerId => {
 //    const beers = await beerRepo.selectById(beerId)
 //    if(!beers || beers?.length===0) return null
