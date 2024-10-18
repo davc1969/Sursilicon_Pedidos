@@ -9,7 +9,7 @@ class PedidoRepo {
     let qry = "";
     qry += "select p.id, p.fecha,  c.nombre, m.medio, c.contacto, ";
     qry += "p.pedido, p.descripcion, ";
-    qry += "e.nombre, d.estado, "
+    qry += "e.nombre as disenador, d.estado, "
     qry += "(select cast (count(f.id) as INT) from foto as f where f.id_pedido = p.id) as num_fotos, "
     qry += "(select cast( count(t.id) as INT) from comentario as t where t.id_pedido = p.id) as num_comentarios "
     qry += "from pedido as p ";
